@@ -1,9 +1,9 @@
 # ============================================================
 # CABECERA
 # ============================================================
-# Alumno: Nombre Apellido
-# URL Streamlit Cloud: https://...streamlit.app
-# URL GitHub: https://github.com/...
+# Alumno: Alexander Sanchez
+# URL Streamlit Cloud: https://spotify-analytics-cpffrmh4fvioypkweawej6.streamlit.app/
+# URL GitHub: https://github.com/AlexanderSG3/spotify-analytics
 
 # ============================================================
 # IMPORTS
