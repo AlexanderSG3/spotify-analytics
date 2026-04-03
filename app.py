@@ -107,6 +107,11 @@ Si la pregunta no requiere visualización:
 - NO generes código
 - Proporciona solo una interpretación en texto
 
+Para preguntas sobre canciones saltadas:
+- Usa la columna "skipped".
+- Una canción saltada es aquella con skipped = True.
+- Calcula el total de canciones saltadas y el porcentaje sobre el total.
+
 Ejemplo correcto para "top artistas":
 
 fig = px.bar(
@@ -211,7 +216,9 @@ def load_data():
 
     # Convertir ms a minutos
     df["minutes_played"] = df["ms_played"] / 60000
-
+    # Detectar canciones saltadas (menos de 1 minuto)
+    df["skipped"] = df["minutes_played"] < 1
+    
     return df
 
     # ----------------------------------------------------------
