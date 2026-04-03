@@ -122,15 +122,7 @@ No expliques el proceso.
 No digas que faltan datos.
 No digas que no se puede calcular.
 
-fig = px.bar(
-    df.groupby("artist_name")["minutes_played"]
-      .sum()
-      .nlargest(5)
-      .reset_index(),
-    x="artist_name",
-    y="minutes_played"
-)
-
+Si la pregunta no requiere gráfico, genera una visualización simple igualmente.
 Ejemplo para uso por hora:
 
 fig = px.line(
