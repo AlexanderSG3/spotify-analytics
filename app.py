@@ -108,15 +108,20 @@ Si la pregunta no requiere visualización:
 - Proporciona solo una interpretación en texto
 
 Para preguntas sobre canciones saltadas:
+
 - Usa la columna "skipped".
-- Una canción saltada es aquella con skipped = True.
-- Calcula el total de canciones saltadas y el porcentaje sobre el total.
+- Calcula explícitamente:
+  - El número total de canciones.
+  - El número de canciones con skipped = True.
+  - El porcentaje correspondiente.
 
-El DataFrame incluye una columna llamada 'skipped', que indica si una canción fue saltada (True si minutes_played < 1).
+Devuelve SIEMPRE el resultado numérico final.
 
-Usa esta columna para responder preguntas sobre canciones saltadas o porcentaje de canciones saltadas.
+No expliques cómo hacerlo.
+No describas el proceso.
+No digas lo que se necesita hacer.
 
-Ejemplo correcto para "top artistas":
+Responde directamente con el resultado.
 
 fig = px.bar(
     df.groupby("artist_name")["minutes_played"]
