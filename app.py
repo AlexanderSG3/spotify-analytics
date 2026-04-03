@@ -109,48 +109,47 @@ Para análisis por estaciones:
 Para trabajar con meses:
 - Extrae el mes como número usando df["month"].str[5:7].astype(int)
 
-Para comparar estaciones:
-- Crea una columna "season" basada en el mes
-- Luego agrupa por season y artist_name
+Para comparaciones entre verano e invierno:
 
-Para análisis estacionales:
+Usa SIEMPRE este procedimiento exacto:
 
-- Define estaciones de la siguiente forma:
-  - Invierno: diciembre, enero, febrero
-  - Primavera: marzo, abril, mayo
-  - Verano: junio, julio, agosto
-  - Otoño: septiembre, octubre, noviembre
+1. Extrae el mes desde la columna "ts":
+   df["month_num"] = df["ts"].dt.month
 
-Para comparar verano vs invierno:
-- Filtra los datos por esas estaciones.
-- Agrupa por artist_name.
-- Calcula los minutos totales reproducidos.
-- Obtén el top 5 artistas en cada estación.
-- Genera una visualización comparativa clara (por ejemplo, gráfico de barras).
+2. Define:
+   verano = meses [6, 7, 8]
+   invierno = meses [12, 1, 2]
 
-Para comparaciones de estaciones (como verano vs invierno):
+3. Filtra:
+   df_verano = df[df["month_num"].isin([6,7,8])]
+   df_invierno = df[df["month_num"].isin([12,1,2])]
 
-- Usa la columna "month" (formato YYYY-MM).
-- Extrae el mes como número.
+4. Agrupa:
+   top_verano = df_verano.groupby("artist_name")["minutes_played"].sum().nlargest(5).reset_index()
+   top_invierno = df_invierno.groupby("artist_name")["minutes_played"].sum().nlargest(5).reset_index()
 
-Define:
-- Verano: meses 6, 7, 8
-- Invierno: meses 12, 1, 2
+5. Añade columna estación:
+   top_verano["season"] = "Verano"
+   top_invierno["season"] = "Invierno"
 
-Pasos:
-1. Crear una columna auxiliar con el número de mes.
-2. Filtrar datos para verano e invierno.
-3. Agrupar por artist_name y sumar minutes_played.
-4. Obtener el top 5 artistas de cada estación.
-5. Combinar los resultados en un único DataFrame.
+6. Combina:
+   df_plot = pd.concat([top_verano, top_invierno])
 
-Visualización:
-- Crear un gráfico de barras con plotly.
-- Eje X: artist_name
-- Eje Y: minutes_played
-- Color: estación (verano vs invierno)
+7. Genera SIEMPRE este gráfico:
+   fig = px.bar(
+       df_plot,
+       x="artist_name",
+       y="minutes_played",
+       color="season",
+       barmode="group",
+       title="Top artistas en verano vs invierno"
+   )
 
-Asegúrate de que la variable final se llame "fig".
+Asegúrate de que:
+- fig existe
+- df_plot no está vacío
+
+
 
 La columna shuffle es booleana (True o False) e indica si la reproducción fue en modo aleatorio.
 
