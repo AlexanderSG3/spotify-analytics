@@ -128,6 +128,30 @@ Para comparar verano vs invierno:
 - Obtén el top 5 artistas en cada estación.
 - Genera una visualización comparativa clara (por ejemplo, gráfico de barras).
 
+Para comparaciones de estaciones (como verano vs invierno):
+
+- Usa la columna "month" (formato YYYY-MM).
+- Extrae el mes como número.
+
+Define:
+- Verano: meses 6, 7, 8
+- Invierno: meses 12, 1, 2
+
+Pasos:
+1. Crear una columna auxiliar con el número de mes.
+2. Filtrar datos para verano e invierno.
+3. Agrupar por artist_name y sumar minutes_played.
+4. Obtener el top 5 artistas de cada estación.
+5. Combinar los resultados en un único DataFrame.
+
+Visualización:
+- Crear un gráfico de barras con plotly.
+- Eje X: artist_name
+- Eje Y: minutes_played
+- Color: estación (verano vs invierno)
+
+Asegúrate de que la variable final se llame "fig".
+
 La columna shuffle es booleana (True o False) e indica si la reproducción fue en modo aleatorio.
 
 Para analizar el uso de shuffle:
@@ -187,6 +211,7 @@ fig = px.line(
     x="hour",
     y="minutes_played"
 )
+
 
 Ejemplo para estaciones:
 
