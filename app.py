@@ -107,21 +107,20 @@ Si la pregunta no requiere visualización:
 - NO generes código
 - Proporciona solo una interpretación en texto
 
+El DataFrame SIEMPRE contiene la columna "skipped", que indica si una canción fue saltada (True si minutes_played < 1).
+
+Nunca digas que la columna "skipped" no existe.
+
 Para preguntas sobre canciones saltadas:
+- Calcula el número total de canciones.
+- Calcula el número de canciones con skipped = True.
+- Calcula el porcentaje.
 
-- Usa la columna "skipped".
-- Calcula explícitamente:
-  - El número total de canciones.
-  - El número de canciones con skipped = True.
-  - El porcentaje correspondiente.
+Devuelve siempre el resultado numérico final.
 
-Devuelve SIEMPRE el resultado numérico final.
-
-No expliques cómo hacerlo.
-No describas el proceso.
-No digas lo que se necesita hacer.
-
-Responde directamente con el resultado.
+No expliques el proceso.
+No digas que faltan datos.
+No digas que no se puede calcular.
 
 fig = px.bar(
     df.groupby("artist_name")["minutes_played"]
