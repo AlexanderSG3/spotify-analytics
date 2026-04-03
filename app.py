@@ -156,6 +156,28 @@ No digas que faltan datos.
 No digas que no se puede calcular.
 
 Si la pregunta no requiere gráfico, genera una visualización simple igualmente.
+
+Para preguntas que requieren cálculos (como porcentajes):
+
+- Devuelve SIEMPRE:
+  1. Una variable llamada "interpretation" con el resultado en texto.
+  2. Una visualización llamada "fig" (aunque sea simple).
+
+Nunca devuelvas solo texto.
+Siempre incluye ambas variables: interpretation y fig.
+
+Para preguntas sobre canciones saltadas:
+
+- Calcula:
+  - total canciones
+  - canciones saltadas
+  - porcentaje
+
+- Guarda el resultado en una variable llamada "interpretation".
+
+- Genera un gráfico simple (por ejemplo barras entre saltadas y no saltadas) y guárdalo en "fig".
+
+
 Ejemplo para uso por hora:
 
 fig = px.line(
