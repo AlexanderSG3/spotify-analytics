@@ -496,7 +496,12 @@ if prompt := st.chat_input("Ej: ¿Cuál es mi artista más escuchado?"):
 #    el LLM? ¿Qué devuelve? ¿Dónde se ejecuta el código generado?
 #    ¿Por qué el LLM no recibe los datos directamente?
 #
-#    [Tu respuesta aquí]
+#    [Mi aplicación sigue una arquitectura text-to-code, donde el usuario introduce una pregunta en lenguaje natural y un modelo de lenguaje (LLM) genera código Python para responderla. 
+#     El LLM recibe como entrada la pregunta del usuario junto con un system prompt que define las reglas, estructura del DataFrame y tipo de análisis que debe realizar. 
+#     A partir de esto, el modelo genera código que utiliza pandas para procesar los datos y plotly para crear visualizaciones.
+#     El código generado no se ejecuta en el propio LLM, sino en el entorno de la aplicación (Streamlit). 
+#     Esto permite trabajar directamente con el DataFrame cargado en memoria. El LLM no accede directamente a los datos por razones de seguridad y diseño, 
+#     sino que genera instrucciones que luego se ejecutan localmente.]
 #
 #
 # 2. EL SYSTEM PROMPT COMO PIEZA CLAVE
@@ -505,11 +510,28 @@ if prompt := st.chat_input("Ej: ¿Cuál es mi artista más escuchado?"):
 #    de tu prompt, y otro de una que falla o fallaría si quitases
 #    una instrucción.
 #
-#    [Tu respuesta aquí]
+#    [El system prompt es fundamental porque guía completamente el comportamiento del modelo. En mi caso, incluye:
+# 
+#    La estructura del DataFrame (columnas como artist_name, track_name, minutes_played, hour, month, skipped)
+#    Reglas de cálculo (por ejemplo, cómo calcular canciones saltadas o canciones más escuchadas) 
+#    Instrucciones sobre cómo generar visualizaciones (fig) y respuestas (interpretation)
+#    Si esta información es incompleta o ambigua, el modelo puede generar código incorrecto o respuestas incoherentes.
+#    Por ejemplo, la pregunta “¿Qué porcentaje de canciones salto?” funciona correctamente porque el prompt especifica cómo usar la columna skipped y cómo calcular el porcentaje.
+#    Sin embargo, antes de ajustar el prompt, preguntas como “Compara mi top 5 de artistas en verano vs invierno” fallaban porque el modelo no sabía cómo definir las estaciones. 
+# Esto se solucionó añadiendo instrucciones explícitas sobre los meses correspondientes a cada estación.]
 #
 #
 # 3. EL FLUJO COMPLETO
 #    Describe paso a paso qué ocurre desde que el usuario escribe
 #    una pregunta hasta que ve el gráfico en pantalla.
 #
-#    [Tu respuesta aquí]
+#    [El flujo de la aplicación es el siguiente:
+#    El usuario introduce una pregunta en lenguaje natural.
+#    La aplicación envía la pregunta junto con el system prompt al LLM.
+#    El LLM genera código Python que incluye.
+#    Procesamiento de datos con pandas
+#    Una visualización (fig)
+#    Un texto interpretativo (interpretation)
+#    La aplicación ejecuta ese código en su entorno local.
+#    Se renderiza el gráfico en Streamlit y se muestra la interpretación al usuario.
+#    Este enfoque permite transformar preguntas abiertas en análisis de datos dinámicos sin necesidad de escribir código manualmente.]
