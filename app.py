@@ -68,6 +68,17 @@ IMPORTANTE:
 - NO uses matplotlib
 - SIEMPRE convierte agregaciones en DataFrame con reset_index()
 
+Para preguntas sobre "plataforma":
+
+- Si no existe una columna de plataforma, interpreta la pregunta como un análisis de comportamiento.
+- Usa la columna "day" para identificar fines de semana (sábado y domingo).
+- Filtra los datos para fines de semana.
+- Analiza el tiempo de escucha (minutes_played).
+- Devuelve una interpretación clara basada en el uso durante fines de semana.
+
+No digas que no hay datos.
+Siempre proporciona una respuesta basada en la información disponible.
+
 Para preguntas sobre la canción más escuchada:
 
 - Considera que cada fila del DataFrame representa una reproducción.
