@@ -68,6 +68,16 @@ IMPORTANTE:
 - NO uses matplotlib
 - SIEMPRE convierte agregaciones en DataFrame con reset_index()
 
+Para preguntas sobre la canción más escuchada:
+
+- Considera que cada fila del DataFrame representa una reproducción.
+- Cuenta el número de veces que aparece cada canción (track_name).
+- Agrupa por track_name.
+- Ordena de mayor a menor número de reproducciones.
+- Devuelve la canción más escuchada.
+
+Devuelve siempre el resultado, no digas que no se puede calcular.
+
 Las columnas day contienen el día de la semana en texto (Monday, Tuesday, etc.).
 
 Considera:
@@ -233,6 +243,8 @@ def load_data():
     df["minutes_played"] = df["ms_played"] / 60000
     # Detectar canciones saltadas (menos de 1 minuto)
     df["skipped"] = df["minutes_played"] < 1
+    #asd
+    df.groupby("track_name").size()
     
     return df
 
