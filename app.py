@@ -112,6 +112,10 @@ Para preguntas sobre canciones saltadas:
 - Una canción saltada es aquella con skipped = True.
 - Calcula el total de canciones saltadas y el porcentaje sobre el total.
 
+El DataFrame incluye una columna llamada 'skipped', que indica si una canción fue saltada (True si minutes_played < 1).
+
+Usa esta columna para responder preguntas sobre canciones saltadas o porcentaje de canciones saltadas.
+
 Ejemplo correcto para "top artistas":
 
 fig = px.bar(
