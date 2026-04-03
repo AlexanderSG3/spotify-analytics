@@ -95,6 +95,21 @@ Para comparar estaciones:
 - Crea una columna "season" basada en el mes
 - Luego agrupa por season y artist_name
 
+Para análisis estacionales:
+
+- Define estaciones de la siguiente forma:
+  - Invierno: diciembre, enero, febrero
+  - Primavera: marzo, abril, mayo
+  - Verano: junio, julio, agosto
+  - Otoño: septiembre, octubre, noviembre
+
+Para comparar verano vs invierno:
+- Filtra los datos por esas estaciones.
+- Agrupa por artist_name.
+- Calcula los minutos totales reproducidos.
+- Obtén el top 5 artistas en cada estación.
+- Genera una visualización comparativa clara (por ejemplo, gráfico de barras).
+
 La columna shuffle es booleana (True o False) e indica si la reproducción fue en modo aleatorio.
 
 Para analizar el uso de shuffle:
