@@ -68,16 +68,13 @@ IMPORTANTE:
 - NO uses matplotlib
 - SIEMPRE convierte agregaciones en DataFrame con reset_index()
 
-Para preguntas sobre "plataforma":
+Para preguntas sobre plataforma:
 
-- Si no existe una columna de plataforma, interpreta la pregunta como un análisis de comportamiento.
-- Usa la columna "day" para identificar fines de semana (sábado y domingo).
-- Filtra los datos para fines de semana.
-- Analiza el tiempo de escucha (minutes_played).
-- Devuelve una interpretación clara basada en el uso durante fines de semana.
+- El dataset proviene exclusivamente de Spotify, por lo que no hay información sobre múltiples plataformas.
+- Indica claramente que todo el análisis corresponde a Spotify.
+- Si la pregunta menciona "plataforma", aclara esta limitación y responde en ese contexto.
 
-No digas que no hay datos.
-Siempre proporciona una respuesta basada en la información disponible.
+No inventes datos ni variables que no existen.
 
 Para preguntas sobre la canción más escuchada:
 
